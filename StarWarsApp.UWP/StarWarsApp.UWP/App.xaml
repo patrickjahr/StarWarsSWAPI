@@ -1,0 +1,36 @@
+﻿<Application
+    x:Class="StarWarsApp.UWP.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StarWarsApp.UWP"
+    xmlns:viewModel="using:Core.ViewModel"
+    xmlns:converter="using:StarWarsApp.UWP.Converter">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--
+                    Note: For compile time bindings with x:Bind
+                    the resource dictionary is loaded using its type rather than the filename
+                -->
+                <ResourceDictionary Source="Styles/CustomStyles.xaml" />
+                <!--
+                    Note: In order to execute unit tests in UWP.UnitTests project uncomment the following
+                    line and comment out the line above.
+                -->
+                <!--<ResourceDictionary Source="StyleResources/CustomStyles.xaml"/>-->
+            </ResourceDictionary.MergedDictionaries>
+            <viewModel:ViewModelManager x:Key="ViewModelManager" />
+            <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <converter:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+            <converter:NullOrEmptyListToVisibilityConverter x:Key="NullOrEmptyListToVisibilityConverter" />
+            <converter:NumberToRomanNumberConverter x:Key="NumberToRomanNumberConverter" />
+            <converter:DoubleToVisibilityConverter x:Key="DoubleToVisibilityConverter" />
+            <converter:EpisodeToImageConverter x:Key="EpisodeToImageConverter" />
+            <converter:RandomPersonPictureConverter x:Key="RandomPersonPictureConverter" />
+            <converter:RandomPlanetPictureConverter x:Key="RandomPlanetPictureConverter" />
+            <converter:RandomVehiclePictureConverter x:Key="RandomVehiclePictureConverter" />
+            <converter:RequestedThemeToVisibilityConverter x:Key="RequestedThemeToVisibilityConverter" />
+        </ResourceDictionary>
+    </Application.Resources>
+
+</Application>

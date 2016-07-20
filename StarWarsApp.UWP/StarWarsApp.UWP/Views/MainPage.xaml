@@ -1,0 +1,110 @@
+﻿<Page
+    x:Class="StarWarsApp.UWP.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StarWarsApp.UWP"
+    xmlns:model="using:Model"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:StarWarsApp.UWP.Controls"
+    mc:Ignorable="d"
+    DataContext="{Binding OverviewViewModel, Source={StaticResource ViewModelManager}}">
+
+    <Page.Resources>
+        <Style TargetType="ScrollViewer">
+            <Setter Property="HorizontalScrollBarVisibility" Value="Disabled" />
+            <Setter Property="HorizontalScrollMode" Value="Disabled" />
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+            <Setter Property="VerticalScrollMode" Value="Auto" />
+        </Style>
+
+        <Style x:Key="LayoutGridStyle" TargetType="Grid">
+            <Setter Property="Background" Value="{ThemeResource ApplicationPageBackgroundThemeBrush}" />
+        </Style>
+    </Page.Resources>
+
+    <Grid Style="{StaticResource LayoutGridStyle}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Small">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="Big">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1240" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="title" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,15" FontSize="36" FontWeight="Bold" FontFamily="ms-appx:/Assets/STARWARS.TTF#STARWARS" Foreground="{ThemeResource SystemAltHighColorBrush}" Text="STAR WARS" />
+            <!--<ProgressRing x:Name="progress" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="42" IsActive="{Binding IsLoading}"></ProgressRing>-->
+            <controls:LightSaberLoadingControl x:Name="lightSaber" HorizontalAlignment="Stretch" VerticalAlignment="Center" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}" />
+            <Pivot Grid.Row="1" x:Name="mainPivot" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}" SelectionChanged="Pivot_OnSelectionChanged" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=reverse}">
+                <PivotItem>
+                    <PivotItem.Header>
+                        <Grid>
+                            <!--<controls:HeaderItemControl HeaderText="People" ImagePath="{Binding Converter={StaticResource RequestedThemeToImagePathConverter}, ConverterParameter=people}" />-->
+                            <controls:HeaderItemControl HeaderText="People" Visibility="{Binding Converter={StaticResource RequestedThemeToVisibilityConverter}, ConverterParameter=light}" Data="M30.3 1.4L30 1.2l-1.5 3l-0.9-0.4l1.6-3.1c-1.4-0.7-3-0.9-4.6-0.2V4h-1V0.4  C22-0.3 20.4-0.1 19 0.8l1.5 3l-0.9 0.4l-1.4-2.8c-2.8 2.1-4.9 6.4-4.9 10c0 4.4 2.7 7.7 6.6 8.9l0.6-0.6l1.9 2.4h3.6l1.9-2.4  l0.6 0.6l0.1 0c3.8-1.2 6.4-4.5 6.4-8.8C34.8 7.8 33 3.6 30.3 1.4z M28.5 9.5c0.6 0 1 0.4 1 1c0 0.2-0.1 0.4-0.2 0.5h-1.7  c-0.1-0.1-0.2-0.3-0.2-0.5C27.5 9.9 27.9 9.5 28.5 9.5z M24 10.2c1.2 0 2.3 0.8 2.3 1.8c0 0.1-0.1 0.3-0.3 0.3s-0.3-0.1-0.3-0.3  c0-0.7-0.8-1.3-1.8-1.3s-1.8 0.6-1.8 1.3c0 0.1-0.1 0.3-0.3 0.3s-0.3-0.1-0.3-0.3C21.8 11 22.8 10.2 24 10.2z M19.5 9.5  c0.6 0 1 0.4 1 1c0 0.2-0.1 0.4-0.2 0.5h-1.7c-0.1-0.1-0.2-0.3-0.2-0.5C18.5 9.9 18.9 9.5 19.5 9.5z M29.5 16.1  c-0.1 0.3-0.4 0.4-0.6 0.3c0 0-2.7-0.8-4.5 0.9c0 0-0.1 0.1-0.1 0.1c0 0 0 0 0 0c-0.1 0-0.1 0-0.2 0s-0.1 0-0.2 0c0 0 0 0 0 0  c0 0-0.1 0-0.1-0.1c-1.8-1.7-4.5-0.9-4.5-0.9c-0.3 0.1-0.5-0.1-0.6-0.3c-0.1-0.3 0.1-0.5 0.3-0.6c0.1 0 3-0.9 5.2 0.8  c2.2-1.8 5-0.9 5.2-0.8C29.4 15.6 29.6 15.9 29.5 16.1z M5.8 6.3C0.8 4.6 0 7.1 0 7.1c2.5 0 5 3.4 5 3.4c3.3 4.3 5.8 4.3 5.8 4.3  c0.7 0 1.4-0.2 2-0.4c-0.3-1-0.5-2.1-0.5-3.2c0-1.3 0.3-2.7 0.7-4C9.7 7.8 5.8 6.3 5.8 6.3z M42.2 6.3c0 0-3.8 1.5-7.1 1.1  c0.4 1.3 0.6 2.7 0.6 4c0 1.1-0.2 2.2-0.5 3.2c0.6 0.2 1.2 0.4 1.9 0.4c0 0 2.5 0 5.8-4.3c0 0 2.5-3.4 5-3.4  C48 7.1 47.2 4.6 42.2 6.3z" />
+                            <controls:HeaderItemControl HeaderText="People" Visibility="{Binding Converter={StaticResource RequestedThemeToVisibilityConverter}, ConverterParameter=dark}" Data="M49 49.1c-3.1-1-7.8-13.7-7.8-13.7s-2.3 0.2-3.7 0.2s-3.7-0.2-3.7-0.2s-5 12.5-8.1 13.5c0 0 5.2 16.1 7.1 19.1  c0.3 0.4 0.8 0.5 1.3 0.3c0 0 0 0 0.1 0c0.8-0.6 1.3-0.9 3.3-0.9s2.5 0.3 3.3 0.9c0.4 0.3 1 0.2 1.3-0.2c0 0 0 0 0-0.1  C44.1 64.9 49 49.1 49 49.1z M38.5 23.9c3.6 0 7.2-0.4 10.8-1.1c-0.4-0.6-0.8-1.1-1.3-1.6c-0.8 0.2-1.6 0.3-2.5 0.4  c-2.7 0.4-5.4 0.6-8.1 0.7c-2.6-0.1-5.3-0.3-7.9-0.7c-0.9-0.1-1.7-0.3-2.5-0.4c-0.3 0.4-0.7 0.9-1 1.3C30.2 23.5 34.4 24 38.5 23.9z   M50.5 24.6c-0.2-0.3-0.9-1.3-1.1-1.6c-3.7 0.8-7.4 1.1-11.1 1.2c-4.2 0.1-8.3-0.4-12.4-1.3c-0.3 0.3-0.7 1.1-0.9 1.5  c4.2 1.1 8.6 1.7 12.9 1.8C42.1 26 46.3 25.5 50.5 24.6z M51.6 26.5c-0.3-0.5-0.5-1-0.8-1.4c-4.2 1-8.5 1.5-12.8 1.5  c-4.6 0-9.1-0.6-13.5-1.8c-0.3 0.4-0.5 0.9-0.8 1.4c4.7 1.3 9.5 2 14.3 2C42.6 28.2 47.2 27.6 51.6 26.5z M51 30  c-0.7-0.6-1.7-0.7-2.5-0.4c-3.6 1-7.4 1.5-11.2 1.4c-3.6 0-7.2-0.5-10.7-1.4c-0.8-0.2-1.6-0.1-2.2 0.5c-2.2 1.9-2.3 7.6-2 11.7  c1.5 2.1 2.6 4.5 3.2 7.1l0 0c0.5 1.3 11.8-11.2 11.8-11.2S48.8 50.7 49 49.1c0.1-0.5 0.3-1.1 0.5-1.6c0.9-2.4 2.2-4.6 3.7-6.6  C52.7 37.2 53.1 31.8 51 30z M38 28.2c-4.8 0-9.7-0.7-14.3-2l-0.4 0.7c4.8 1.4 9.7 2 14.7 2c4.7 0 9.4-0.6 13.9-1.8l-0.4-0.7  C47.1 27.6 42.6 28.2 38 28.2z M37.7 0L37.7 0C22.5 1.3-0.9 55.3 0 57.9s-6 3.7 36.6 8.4l2.2 0.1c42.6-4.6 35.7-5.7 36.6-8.4  S52.9 1.3 37.7 0z M37.5 16c4.7 0 7.9 2.5 10.4 5.3c0.5 0.5 0.9 1 1.3 1.6l0.5 0.7c0.2 0.3 0.4 0.6 0.6 0.9l0.4 0.7  c0.3 0.5 0.5 0.9 0.8 1.4l0.4 0.7c1.8 3.4 3.3 7.3 5 10.7c1.4 3.2 3.4 6.1 6 8.4c15.3 12.8 15 15-24.4 18.4h-0.8h-0.3h-0.8  c-39.4-3.4-39.7-5.7-24.4-18.4c2.6-2.3 4.6-5.2 6-8.3c1.8-3.6 3.3-7.6 5.2-11.1l0.4-0.7c0.3-0.5 0.5-0.9 0.8-1.4l0.4-0.7  c0.2-0.4 0.5-0.7 0.7-1.1l0.5-0.7c0.3-0.4 0.6-0.8 1-1.2C29.7 18.5 33 16 37.5 16 M49.9 34.2c-1.2-4.4-1.8-0.9-11.5-0.9H37  c-9.7 0-10.3-3.5-11.5 0.9s4.9 1.8 11.5 1.8h1.4C45.1 35.9 51.2 38.7 49.9 34.2z M53.1 40.9c1.3-1.1 2.7-2.2 4.2-3.1 M22.5 41.8  c0 0-2.6-3.4-4.5-3.7 M39.7 37.1h-4.5c-0.1 0-0.2-0.1-0.2-0.2c0 0 0 0 0 0l0 0c0-0.1 0.1-0.2 0.2-0.2h4.5c0.1 0 0.2 0.1 0.2 0.2l0 0  C39.9 37 39.8 37.1 39.7 37.1C39.7 37.1 39.7 37.1 39.7 37.1z M40.4 37.9h-5.9c-0.1 0-0.2-0.1-0.2-0.2l0 0c0-0.1 0.1-0.2 0.2-0.2  h5.9c0.1 0 0.2 0.1 0.2 0.2l0 0C40.5 37.8 40.5 37.9 40.4 37.9z M41.1 38.7H34c-0.1 0-0.1-0.1-0.1-0.2l0 0c0-0.1 0.1-0.2 0.2-0.2  h7.1c0.1 0 0.2 0.1 0.2 0.2l0 0C41.3 38.6 41.3 38.7 41.1 38.7C41.2 38.7 41.1 38.7 41.1 38.7z" />
+                        </Grid>
+                    </PivotItem.Header>
+                    <controls:StarWarsEntityListControl PlaceHolderText="Search for Persons" ItemSource="{Binding People}" DisplaySearchBox="True" DisplayMemberPath="name" SelectedEntity="{Binding SelectedPeople}"/>
+                </PivotItem>
+                <PivotItem>
+                    <PivotItem.Header>
+                        <Grid>
+                            <controls:HeaderItemControl HeaderText="Starships" Visibility="{Binding Converter={StaticResource RequestedThemeToVisibilityConverter}, ConverterParameter=dark}" Data="M505.1 245.1c-0.5-15.3-2.3-30.4-5.5-44.9H397.8v-18h35.9v-18h-71.8v-18h53.9v-18h-18v-18h-35.9v-18h18v-18h-35.9v-18h18  v-18V27.1C329.2 11.6 292.7 2.6 254.1 2.6C118.3 2.6 7.9 110.4 3.1 245.1H505.1z M164.3 56.5c39.7 0 71.8 32.2 71.8 71.8  c0 39.7-32.2 71.8-71.8 71.8c-39.7 0-71.8-32.2-71.8-71.8C92.5 88.7 124.6 56.5 164.3 56.5 M308 487.6h-18v-18h53.9v-18h18v-18h53.9  v-18h18v-18h-35.9v-18h-53.9v-18h35.9v-18h71.8v-18h-35.9v-18h83.9c3.2-14.5 4.9-29.5 5.5-44.9H3.1c4.8 134.7 115.2 242.5 251 242.5  c18.5 0 36.5-2.1 53.9-5.9V487.6z" />
+                            <controls:HeaderItemControl HeaderText="Starships" Visibility="{Binding Converter={StaticResource RequestedThemeToVisibilityConverter}, ConverterParameter=light}" Data="M199.1 83.3l45.5-76c-5.3-2.3-11-4-17.2-4c-24.9 0-45.2 20.2-45.2 45.2C182.2 62.6 188.9 75 199.1 83.3 M507.8 307.9  l-12.1-8.1c-2.3-39.3-16.4-77.7-41.2-109.4l-31.7 4.1l2.2-3.3c8.3-12.4 4.9-29.2-7.5-37.5L399.9 142c-12.4-8.3-29.2-4.9-37.5 7.5  l-2.5 3.7L345.9 69l-85.5-53.1l-45.8 76.6l22.5 12.6L73.9 84.4l-23.6 35.3l98.4 65.7c-4.4 5.3-8.7 10.8-12.6 16.7  c-3.9 5.9-7.4 11.9-10.6 18.1l-98.4-65.7L3.5 189.8l127.5 223.1l0.2-0.4c2.6 4.3 5.4 8.4 8.3 12.5l42.5-5.5l-7.9 11.8  c-8.3 12.4-4.9 29.2 7.5 37.5l17.7 11.8c12.4 8.2 29.2 4.9 37.5-7.5l6.6-9.9l4.8 37.7c37.1 10.1 75.9 8.7 111.7-2.7l14.4 9.6  c39.5-13.9 75-40.3 100-77.8C499.3 392.6 510.1 349.7 507.8 307.9 M362.7 413.8c-2.8 4.1-8.4 5.2-12.5 2.5  c-4.1-2.8-5.2-8.4-2.5-12.5c2.8-4.1 8.4-5.2 12.5-2.5C364.3 404.1 365.4 409.7 362.7 413.8 M359.5 351.4  c-13.4 20.1-35.8 32.1-60 32.1c-14.3 0-28.1-4.2-40-12.2c-33.1-22.1-42-66.9-19.9-100c13.4-20.1 35.8-32.1 60-32.1  c14.3 0 28.1 4.2 40 12.1C372.6 273.5 381.6 318.3 359.5 351.4 M388.1 451c-2.8 4.1-8.4 5.2-12.5 2.5c-4.2-2.8-5.3-8.4-2.5-12.5  c2.8-4.1 8.4-5.2 12.5-2.5C389.8 441.2 390.9 446.8 388.1 451 M395.2 380.2c-2.8 4.1-8.3 5.2-12.5 2.5c-4.1-2.8-5.3-8.4-2.5-12.5  c2.8-4.1 8.4-5.3 12.5-2.5C396.8 370.5 397.9 376.1 395.2 380.2 M401.3 339.8c-4.1-2.8-5.2-8.4-2.5-12.5c2.8-4.1 8.4-5.2 12.5-2.5  c4.1 2.8 5.2 8.4 2.5 12.5C411 341.4 405.4 342.6 401.3 339.8 M429.9 403.4c-2.8 4.1-8.3 5.2-12.5 2.5c-4.1-2.8-5.3-8.3-2.5-12.5  c2.8-4.1 8.4-5.3 12.5-2.5C431.6 393.7 432.7 399.3 429.9 403.4 M457.8 346.6c-2.8 4.2-8.4 5.3-12.5 2.5c-4.2-2.8-5.3-8.4-2.5-12.5  c2.8-4.1 8.4-5.3 12.5-2.5C459.5 336.9 460.6 342.5 457.8 346.6 M329.6 266.4c-8.9-6-19.3-9.1-30-9.1c-18.2 0-35 9-45 24  c-16.6 24.8-9.9 58.4 14.9 75c8.9 6 19.3 9.1 30 9.1c18.1 0 35-9 45-24C361.1 316.6 354.4 282.9 329.6 266.4" />
+                            <!--<controls:HeaderItemControl HeaderText="Starships" ImagePath="{Binding Converter={StaticResource RequestedThemeToImagePathConverter}, ConverterParameter=starships}" />-->
+                        </Grid>
+                    </PivotItem.Header>
+                    <controls:StarWarsEntityListControl PlaceHolderText="Search for Starships" ItemSource="{Binding Starships}" DisplaySearchBox="True" DisplayMemberPath="name" />
+                </PivotItem>
+                <PivotItem>
+                    <PivotItem.Header>
+                        <controls:HeaderItemControl Data="M1.3130364,12.386986L30.204038,12.386986 30.204038,29.999987C30.204038,31.104967,29.309019,31.999987,28.204038,31.999987L3.313037,31.999987C2.2090331,31.999987,1.3130367,31.104967,1.3130364,29.999987z M2.4200006,4.9829936L7.2370006,9.8009903 1.5160001,10.87799 0,5.4389935z M10.665988,3.4279928L15.485977,8.2479978 10.343988,9.2159991 5.5259992,4.3969941z M18.678026,1.9159946L23.501024,6.7389927 18.593025,7.6619925 13.772028,2.8409948z M28.840988,0L30.406978,5.4389939 26.607999,6.1539931 21.784025,1.3309984z" HeaderText="Movies"/>
+                    </PivotItem.Header>
+                    <controls:StarWarsEntityListControl PlaceHolderText="Search for Movies" ItemSource="{Binding Films}" DisplaySearchBox="True" DisplayMemberPath="title" SelectedEntity="{Binding SelectedFilm}" />
+                </PivotItem>
+                <PivotItem>
+                    <PivotItem.Header>
+                        <controls:HeaderItemControl Data="M3.6093629,0.00028046568C5.4283138,-0.013727013 7.8173276,0.49725188 10.503274,1.4662625 9.5433226,2.109228 8.6942721,2.9012392 7.9843178,3.8102222 6.1663433,3.2612193 4.6993175,3.0212324 3.6953603,3.0212327 3.4813734,3.0212324 3.3043733,3.0312117 3.1613696,3.0462263 3.6263304,4.2112177 5.3173533,6.5181907 8.5543194,9.2271355L8.6342746,9.2931441 8.3833008,9.0661276C9.6982289,5.9011954 12.817215,3.6742075 16.459268,3.6742075 21.288198,3.6742075 25.203075,7.5891593 25.203075,12.417092 25.203075,14.26405 24.630082,15.977037 23.65414,17.387021L23.45712,17.65902 23.7131,17.742026C25.676091,18.358992 27.246144,18.621013 28.307046,18.621013 28.520057,18.621013 28.697057,18.611003 28.839145,18.595988 28.531043,17.82302 27.678147,16.544015 26.19513,14.982057 26.682063,13.951066 27.005057,12.83008 27.141166,11.651111 30.897107,15.187041 32.790034,18.517009 31.687017,20.334977 29.960105,23.186925 21.533191,21.238955 12.869217,15.984026 4.2053652,10.730105 -1.4165866,4.1592162 0.31239937,1.3082448 0.84236241,0.43325744 2.0043379,0.012273585 3.6093629,0.00028046568z" HeaderText="Planets" />
+                    </PivotItem.Header>
+                    <controls:StarWarsEntityListControl PlaceHolderText="Search for Planets" ItemSource="{Binding Planets}" DisplaySearchBox="True" DisplayMemberPath="name" />
+                </PivotItem>
+                <PivotItem>
+                    <PivotItem.Header>
+                        <Grid>
+                            <controls:HeaderItemControl HeaderText="Vehicles" Visibility="{Binding Converter={StaticResource RequestedThemeToVisibilityConverter}, ConverterParameter=light}" Data="M26 3c0-1.1-0.9-2-2-2s-2 0.9-2 2v0.5h4L26 3z M24 2.6c-0.3 0-0.6-0.3-0.6-0.6s0.3-0.6 0.6-0.6  c0.3 0 0.6 0.3 0.6 0.6C24.6 2.3 24.3 2.6 24 2.6z M25.1 3c-0.2 0-0.3-0.1-0.3-0.3s0.1-0.3 0.3-0.3s0.3 0.1 0.3 0.3S25.3 3 25.1 3z   M19.4 9.6l0-0.1L20 7h-0.8c0.3-0.3 0.5-0.8 0.7-1.2c0.4-1.6-0.5-3.2-2.1-3.7s-3.2 0.5-3.7 2.1c0 0 0 0 0 0.1L11.4 5L3.7 3  C3.9 2.7 4 2.3 4 2c0-1.1-0.9-2-2-2S0 0.9 0 2c0 1 0.7 1.8 1.6 2l16.5 4.5L1.6 13C0.7 13.2 0 14 0 15c0 1.1 0.9 2 2 2s2-0.9 2-2  c0-0.3-0.1-0.7-0.3-1l7.6-2l2.7 0.7c0 0 0 0 0 0.1c0.4 1.6 2.1 2.6 3.7 2.1c1.3-0.4 2.2-1.5 2.2-2.9l-0.5-2.3L19.4 9.6z M2 3  C1.4 3 1 2.6 1 2s0.4-1 1-1s1 0.4 1 1S2.6 3 2 3z M2 16c-0.6 0-1-0.4-1-1s0.4-1 1-1s1 0.4 1 1S2.6 16 2 16z M16.5 6.9  c-1-0.3-1.6-1.2-1.5-2.2l3.8 1C18.5 6.7 17.5 7.2 16.5 6.9z M15 12.3c-0.1-1 0.5-1.9 1.5-2.2c1-0.3 2 0.3 2.4 1.2L15 12.3z   M17.5 13.9c-1 0.3-2-0.3-2.4-1.2l3.8-1C19.1 12.7 18.5 13.7 17.5 13.9z M19 5.3l-3.8-1c0.4-0.9 1.4-1.4 2.4-1.2  C18.5 3.3 19.1 4.3 19 5.3z M46.4 13L29.9 8.5L46.4 4C47.3 3.8 48 3 48 2c0-1.1-0.9-2-2-2s-2 0.9-2 2c0 0.3 0.1 0.7 0.3 1l-7.6 2  l-2.7-0.7c0 0 0 0 0-0.1c-0.4-1.6-2.1-2.5-3.7-2.1s-2.5 2.1-2.1 3.7c0.1 0.5 0.4 0.9 0.7 1.2H28l0.5 2.5l0 0.1l0 0.1L28 12h0  c0 1.3 0.9 2.5 2.2 2.9c1.6 0.4 3.2-0.5 3.7-2.1c0 0 0 0 0-0.1l2.7-0.7l7.6 2c-0.2 0.3-0.3 0.6-0.3 1c0 1.1 0.9 2 2 2s2-0.9 2-2  C48 14 47.3 13.2 46.4 13z M46 1c0.6 0 1 0.4 1 1s-0.4 1-1 1s-1-0.4-1-1S45.4 1 46 1z M33 4.7c0.1 1-0.5 1.9-1.5 2.2  c-1 0.3-2-0.3-2.4-1.2L33 4.7z M30.5 3.1c1-0.3 2 0.3 2.4 1.2l-3.8 1C28.9 4.3 29.5 3.3 30.5 3.1z M30.5 13.9  c-1-0.3-1.6-1.2-1.5-2.2l3.8 1C32.5 13.7 31.5 14.2 30.5 13.9z M33 12.3l-3.8-1c0.4-0.9 1.4-1.4 2.4-1.2  C32.5 10.3 33.1 11.3 33 12.3z M46 16c-0.6 0-1-0.4-1-1s0.4-1 1-1s1 0.4 1 1S46.6 16 46 16z M21.1 4L20 9.6l1 5.4l1.2-3h3.6l1.2 3  l1-5.4L26.9 4H21.1z M21.3 8l0.5-2.4L22.2 8H21.3z M25.3 8h-2.7l-0.4-3h3.5L25.3 8z M25.8 8l0.3-2.4L26.6 8H25.8z M22.5 12.5  l-1.4 3.4l0.8 2.1h4.2l0.8-2.1l-1.4-3.4H22.5z M24.8 14.5h-1.5V13h1.5V14.5z" />
+                            <controls:HeaderItemControl HeaderText="Vehicles" Visibility="{Binding Converter={StaticResource RequestedThemeToVisibilityConverter}, ConverterParameter=dark}"  Data="M5 6c0.6 0 1 0.4 1 1S5.6 8 5 8S4 7.6 4 7S4.4 6 5 6z M10 4.5h1v4h-1V4.5z M26.5 16.4v-1.8  l-1.8-1.2l-1.4 2.8c-0.7 0.3-1.2 1-1.2 1.9c0 0.5 0.2 0.9 0.4 1.2L22.1 24h3l0.3-4.6c0.4-0.4 0.6-0.9 0.6-1.4c0-0.2 0-0.3-0.1-0.5  L26.5 16.4z M24 19c-0.6 0-1-0.4-1-1s0.4-1 1-1s1 0.4 1 1S24.6 19 24 19z M26.3 9H32V3l-5-1.6L26 0h-7l-1 1.4L14 3v6h4.7H26.3z M8 9  h1V4H5L2 6v1.5H0.3C0.1 7.5 0 7.6 0 7.8S0.1 8 0.3 8H2v1H0.5C0.2 9 0 9.2 0 9.5S0.2 10 0.5 10H7L8 9z M5 8.5C4.2 8.5 3.5 7.8 3.5 7  S4.2 5.5 5 5.5S6.5 6.2 6.5 7S5.8 8.5 5 8.5z M31.8 24l-1.1-5c0.2-0.3 0.3-0.6 0.3-1c0-0.5-0.2-1-0.5-1.3v-2.4l1.2-4.3H16  c-1.1 0-2 0.9-2 2c0 0.3 0.1 0.5 0.2 0.8L13 16.3c-0.6 0.3-1 1-1 1.7c0 0.3 0.1 0.5 0.1 0.7L10.3 24h3.2l0.7-2l2.6 1.2l1.3-2.7  l-2.6-1.2C15.8 19 16 18.5 16 18c0-0.3-0.1-0.5-0.2-0.8l1-2.9l3-2.4h4.8l3 2v2.5v0.2C27.2 17 27 17.5 27 18c0 0.7 0.3 1.3 0.8 1.6  l0.9 4.4H31.8z M14 19c-0.6 0-1-0.4-1-1s0.4-1 1-1s1 0.4 1 1S14.6 19 14 19z M16 13c-0.6 0-1-0.4-1-1s0.4-1 1-1c0.6 0 1 0.4 1 1  S16.6 13 16 13z M29 11c0.6 0 1 0.4 1 1s-0.4 1-1 1s-1-0.4-1-1S28.4 11 29 11z M28 18c0-0.6 0.4-1 1-1s1 0.4 1 1s-0.4 1-1 1  S28 18.6 28 18z M12 4.5h1v4h-1V4.5z M19.7 20.5L19 20.8l-1.6 3.4l0.2 0.8l1.4 0.7l2.2-4.5L19.7 20.5z M32.4 25h-3.8L28 25.5V27h5  v-1.5L32.4 25z M21.6 25L21 25.5V27h5v-1.5L25.4 25H21.6z M9.6 25L9 25.5V27h5v-1.5L13.4 25H9.6z M9.5 19.9l1 0.4l0.6-1.6  C11 18.5 11 18.2 11 18c0-0.9 0.4-1.8 1.1-2.4l1.1-3.3L9 16c0 0 0 0 0 0c-1.1 0-2 0.9-2 2s0.9 2 2 2C9.2 20 9.4 20 9.5 19.9z M8 18  c0-0.6 0.4-1 1-1s1 0.4 1 1s-0.4 1-1 1S8 18.6 8 18z" />
+                            <!--<controls:HeaderItemControl HeaderText="Vehicles" ImagePath="{Binding Converter={StaticResource RequestedThemeToImagePathConverter}, ConverterParameter=vehicles}" />-->
+                        </Grid>
+                    </PivotItem.Header>
+                    <controls:StarWarsEntityListControl PlaceHolderText="Search for Vehicles" ItemSource="{Binding Vehicles}" DisplaySearchBox="True" DisplayMemberPath="name" />
+                </PivotItem>
+                <PivotItem>
+                    <PivotItem.Header>
+                        <controls:HeaderItemControl HeaderText="Species" Data="M214.8 166.1c-4.1-42.1-13.5-103.3-30.3-144.8c-19.8 9.4-37.2 22.4-52.4 38.3C173.2 94.5 200.9 139.7 214.8 166.1   M382.3 59.6c-15.2-15.8-32.6-28.9-52.4-38.3c-16.8 41.5-26.2 102.7-30.3 144.8C313.5 139.7 341.1 94.5 382.3 59.6 M427 123.9  c-62.1 30.6-94 68.1-94.5 68.8c-0.9 1.1-2.2 1.6-3.5 1.6c-1 0-2-0.3-2.9-1c-1.9-1.6-2.2-4.4-0.6-6.3c0.5-0.7 33.4-39.4 97.3-71  c-9.9-18.1-21.4-34.8-34.4-49.6c-59.8 50.4-90.7 124-91.2 125.1c-0.2 0.4-0.5 0.6-0.8 1c-0.2 0.3-0.3 0.5-0.6 0.7  c-0.8 0.7-1.7 1.1-2.8 1.1h-0.3c-0.1 0-0.1-0.1-0.2-0.1c-0.4 0-0.8-0.1-1.2-0.2c-0.3-0.1-0.4-0.5-0.7-0.7c-0.5-0.3-0.9-0.7-1.2-1.2  c-0.3-0.5-0.4-0.9-0.5-1.5c-0.1-0.4-0.4-0.6-0.4-1c0.4-6.2 6.9-108.2 33-171.8C302.3 9.9 281 5.4 257.2 5.4S212 9.9 192.7 17.8  c26.1 63.6 32.6 165.6 33 171.8c0 0.4-0.3 0.6-0.4 1c-0.1 0.6-0.2 1-0.5 1.5c-0.3 0.5-0.7 0.8-1.2 1.2c-0.3 0.2-0.4 0.6-0.7 0.7  c-0.4 0.2-0.8 0.2-1.2 0.2c-0.1 0-0.1 0.1-0.2 0.1h-0.3c-1 0-2-0.4-2.8-1.1c-0.3-0.2-0.4-0.5-0.6-0.7c-0.3-0.3-0.6-0.6-0.8-1  c-0.5-1.1-31.3-74.7-91.2-125.1c-13 14.8-24.5 31.5-34.4 49.6c63.8 31.6 96.7 70.3 97.3 71c1.6 1.9 1.3 4.7-0.6 6.3  c-0.9 0.7-1.9 1-2.9 1c-1.3 0-2.6-0.6-3.5-1.6c-0.5-0.6-32.4-38.2-94.5-68.8C23.6 247.2 23.5 422.6 23.5 422.6  c0 17.8 14.9 32.2 33.4 32.2h74.5l44.6 37.7l32.5-16.2l48.7 32.5l48.7-32.5l32.5 16.2l44.6-37.7h74.5c18.4 0 33.4-14.4 33.4-32.2  C490.9 422.6 490.8 247.2 427 123.9 M295.5 230.4h31.3c1.4 2.6 2.3 5.5 2.3 8.7c0 9.9-8.1 18-18 18c-9.9 0-18-8.1-18-18  C293.1 235.9 294 233 295.5 230.4 M257.2 275c25.5 0 46.2 12.1 46.2 27c0 1.7-0.3 3.4-0.9 5c-2.2-0.7-4.4-1.1-6.8-1.1  c-12.2 0-22.1 9.5-22.9 21.4c-4.9 1-10.1 1.7-15.6 1.7c-5.5 0-10.7-0.7-15.6-1.7c-0.9-12-10.8-21.4-22.9-21.4  c-2.4 0-4.7 0.5-6.8 1.1c-0.5-1.6-0.9-3.3-0.9-5C210.9 287.1 231.6 275 257.2 275 M187.6 230.4h31.3c1.4 2.6 2.3 5.5 2.3 8.7  c0 9.9-8.1 18-18 18s-18-8.1-18-18C185.3 235.9 186.2 233 187.6 230.4 M122.3 373.9c0 5-4 9-9 9s-9-4-9-9  c0-37.2 36.6-68.4 90.3-82.2c-1 3.3-1.7 6.7-1.7 10.3c0 2.8 0.6 5.7 1.4 8.6C151.9 322.9 122.3 346.9 122.3 373.9 M328.8 405.8  c-0.7 2.7-3.1 4.4-5.6 4.4H210.8h-5.2c-11.3 0-20.5-9.9-20.4-21.3c0-11.4 9.3-20.7 20.6-20.6c1.7 0 3.5 0.3 5 0.7l112.3 29.4  l1.5 0.4C327.8 399.4 329.6 402.6 328.8 405.8 M401 382.9c-5 0-9-4-9-9c0-27-29.6-51-72-63.3c0.8-2.9 1.4-5.8 1.4-8.6  c0-3.6-0.7-7-1.7-10.3c53.7 13.8 90.3 45 90.3 82.2C410 378.9 406 382.9 401 382.9" />
+                        <!--<controls:HeaderItemControl HeaderText="Species" ImagePath="{Binding Converter={StaticResource RequestedThemeToImagePathConverter}, ConverterParameter=species}" />-->
+                    </PivotItem.Header>
+                    <controls:StarWarsEntityListControl PlaceHolderText="Search for Species" ItemSource="{Binding Species}" DisplaySearchBox="True" DisplayMemberPath="name" />
+                </PivotItem>
+            </Pivot>
+
+            <CommandBar Grid.Row="2" x:Name="cmdBar" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+                <AppBarButton Icon="Sync" Label="Update" Command="{Binding RefreshCommand}" />
+                <CommandBar.SecondaryCommands>
+                    <AppBarButton Label="Settings" Click="SettingsButton_OnClick"></AppBarButton>
+                </CommandBar.SecondaryCommands>
+            </CommandBar>
+        </Grid>
+    </Grid>
+</Page>

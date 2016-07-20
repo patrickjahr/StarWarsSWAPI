@@ -1,0 +1,60 @@
+﻿<Page
+    x:Class="StarWarsApp.UWP.Views.ExtendedSplashScreen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StarWarsApp.UWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:StarWarsApp.UWP.Controls"
+    mc:Ignorable="d"
+    Loaded="ExtendedSplashScreen_OnLoaded"
+    DataContext="{Binding OverviewViewModel, Source={StaticResource ViewModelManager}}">
+    <Page.Resources>
+        <Storyboard x:Name="StbStartLoad">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="title">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.0" Value="-50">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut" Power="3"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="lightSaber">
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Small">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="title.FontSize" Value="32" />
+                        <Setter Target="lightSaber.Margin" Value="15,0" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Big">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="title.FontSize" Value="72" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <TextBlock x:Name="title" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="72" FontWeight="Bold" FontFamily="ms-appx:/Assets/STARWARS.TTF#STARWARS" Foreground="{ThemeResource SystemAltHighColorBrush}" Text="STAR WARS" Margin="0,1">
+                <TextBlock.RenderTransform>
+                    <CompositeTransform />
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <controls:LightSaberLoadingControl x:Name="lightSaber" Opacity="0" VerticalAlignment="Center"  />
+        </Grid>
+    </Grid>
+</Page>

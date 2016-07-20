@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{EE8C5CE1-DC2D-4293-B56A-727592E100D6}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StarWarsApp.UWP</RootNamespace>
+    <AssemblyName>StarWarsApp.UWP</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>StarWarsApp.UWP_TemporaryKey.pfx</PackageCertificateKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\bg-gross.png" />
+    <Content Include="Assets\bg_background_light.jpg" />
+    <Content Include="Assets\icons\admiral-akbar.png" />
+    <Content Include="Assets\icons\admiral-akbar_light.fw.png" />
+    <Content Include="Assets\icons\at-at.png" />
+    <Content Include="Assets\icons\at-at_light.fw.png" />
+    <Content Include="Assets\icons\bounty_hunter.png" />
+    <Content Include="Assets\icons\bounty_hunter_light.fw.png" />
+    <Content Include="Assets\icons\c3po.png" />
+    <Content Include="Assets\icons\c3po_light.fw.png" />
+    <Content Include="Assets\icons\chewbacca.png" />
+    <Content Include="Assets\icons\chewbacca_light.fw.png" />
+    <Content Include="Assets\icons\clone.png" />
+    <Content Include="Assets\icons\clone_light.fw.png" />
+    <Content Include="Assets\icons\darth_vader.png" />
+    <Content Include="Assets\icons\darth_vader_light.fw.png" />
+    <Content Include="Assets\icons\death_star.png" />
+    <Content Include="Assets\icons\death_star_light.fw.png" />
+    <Content Include="Assets\icons\falcon.png" />
+    <Content Include="Assets\icons\falcon_light.fw.png" />
+    <Content Include="Assets\icons\first_order.png" />
+    <Content Include="Assets\icons\kylo_ren.png" />
+    <Content Include="Assets\icons\kylo_ren_light.fw.png" />
+    <Content Include="Assets\icons\leia.png" />
+    <Content Include="Assets\icons\r2d2.png" />
+    <Content Include="Assets\icons\Star Wars-48.png" />
+    <Content Include="Assets\icons\tie-fighter.png" />
+    <Content Include="Assets\icons\x-wing.png" />
+    <Content Include="Assets\icons\yoda.png" />
+    <Content Include="Assets\movie_logo\Episode1Logo.jpg" />
+    <Content Include="Assets\movie_logo\Episode2Logo.jpg" />
+    <Content Include="Assets\movie_logo\Episode3Logo.jpg" />
+    <Content Include="Assets\movie_logo\Episode4Logo.jpg" />
+    <Content Include="Assets\movie_logo\Episode5Logo.jpg" />
+    <Content Include="Assets\movie_logo\Episode6Logo.jpg" />
+    <Content Include="Assets\movie_logo\Episode7Logo.jpg" />
+    <Content Include="Assets\movie_logo_wide\Episode1Logo.jpg" />
+    <Content Include="Assets\movie_logo_wide\Episode2Logo.jpg" />
+    <Content Include="Assets\movie_logo_wide\Episode3Logo.jpg" />
+    <Content Include="Assets\movie_logo_wide\Episode4Logo.jpg" />
+    <Content Include="Assets\movie_logo_wide\Episode5Logo.jpg" />
+    <Content Include="Assets\movie_logo_wide\Episode6Logo.jpg" />
+    <Content Include="Assets\movie_logo_wide\Episode7Logo.jpg" />
+    <Content Include="Assets\PeopleIcon\admiral-akbar.png" />
+    <Content Include="Assets\PeopleIcon\boba_fett.png" />
+    <Content Include="Assets\PeopleIcon\jango_fett.png" />
+    <Content Include="Assets\PeopleIcon\Jedi-icon.png" />
+    <Content Include="Assets\lightsaber_handle.png" />
+    <Content Include="Assets\PeopleIcon\first_order.png" />
+    <Content Include="Assets\PeopleIcon\r4_P17.png" />
+    <Content Include="Assets\PeopleIcon\rebels.png" />
+    <Content Include="Assets\PeopleIcon\bb8.png" />
+    <Content Include="Assets\PeopleIcon\c3_po.png" />
+    <Content Include="Assets\PeopleIcon\chewie.png" />
+    <Content Include="Assets\PeopleIcon\darth_vader.png" />
+    <Content Include="Assets\PeopleIcon\finn.png" />
+    <Content Include="Assets\PeopleIcon\imperium.png" />
+    <Content Include="Assets\PeopleIcon\general_hux.png" />
+    <Content Include="Assets\PeopleIcon\han_solo.png" />
+    <Content Include="Assets\PeopleIcon\kylo_ren_color.png" />
+    <Content Include="Assets\PeopleIcon\leia_organa_solo.png" />
+    <Content Include="Assets\PeopleIcon\luke_skywalker.png" />
+    <Content Include="Assets\PeopleIcon\mass.png" />
+    <Content Include="Assets\PeopleIcon\poe_cameron.png" />
+    <Content Include="Assets\PeopleIcon\r2_d2.png" />
+    <Content Include="Assets\PeopleIcon\r3_d4.png" />
+    <Content Include="Assets\PeopleIcon\r5_d4.png" />
+    <Content Include="Assets\PeopleIcon\rey.png" />
+    <Content Include="Assets\PeopleIcon\Sith.png" />
+    <Content Include="Assets\PeopleIcon\storm_truper.png" />
+    <Content Include="Assets\PeopleIcon\sw.png" />
+    <Content Include="Assets\PeopleIcon\yoda.png" />
+    <Content Include="Assets\planets\blue_planet.png" />
+    <Content Include="Assets\planets\red_planet.png" />
+    <Content Include="Assets\planets\ring_planet.png" />
+    <Content Include="Assets\planets\sand_2_planet.png" />
+    <Content Include="Assets\planets\sand_planet.png" />
+    <Content Include="Assets\planets\small_planet.png" />
+    <Content Include="Assets\splash.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Square310x310Logo.scale-100.png" />
+    <Content Include="Assets\Square310x310Logo.scale-125.png" />
+    <Content Include="Assets\Square310x310Logo.scale-150.png" />
+    <Content Include="Assets\Square310x310Logo.scale-200.png" />
+    <Content Include="Assets\Square310x310Logo.scale-400.png" />
+    <Content Include="Assets\Starships\milenium_falke.png" />
+    <Content Include="Assets\Starships\x_wing.png" />
+    <Content Include="Assets\Starships\star_destroyer.png" />
+    <Content Include="Assets\Starships\imperial_shuttle.png" />
+    <Content Include="Assets\Starships\at_at.png" />
+    <Content Include="Assets\Starships\x_wing_2.png" />
+    <Content Include="Assets\Starships\death_star.png" />
+    <Content Include="Assets\STARWARS.TTF" />
+    <Content Include="Assets\Starjedi.ttf" />
+    <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BootStrapper.cs" />
+    <Compile Include="Controls\Expander.cs" />
+    <Compile Include="Controls\FilmDetailInfoControl.xaml.cs">
+      <DependentUpon>FilmDetailInfoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HeaderTileBoxControl.xaml.cs">
+      <DependentUpon>HeaderTileBoxControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HeaderItemControl.xaml.cs">
+      <DependentUpon>HeaderItemControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LightSaberLoadingControl.xaml.cs">
+      <DependentUpon>LightSaberLoadingControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PeopleDetailInfoControl.xaml.cs">
+      <DependentUpon>PeopleDetailInfoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\StarWarsEntityListControl.xaml.cs">
+      <DependentUpon>StarWarsEntityListControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TileBoxControl.xaml.cs">
+      <DependentUpon>TileBoxControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converter\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converter\DoubleToVisibilityConverter.cs" />
+    <Compile Include="Converter\EpisodeToImageConverter.cs" />
+    <Compile Include="Converter\NullOrEmptyListToVisibilityConverter.cs" />
+    <Compile Include="Converter\NullToVisibilityConverter.cs" />
+    <Compile Include="Converter\NumberToRomanNumberConverter.cs" />
+    <Compile Include="Converter\RandomVehiclePictureConverter.cs" />
+    <Compile Include="Converter\RandomPlanetPictureConverter.cs" />
+    <Compile Include="Converter\RandomPersonPictureConverter.cs" />
+    <Compile Include="Converter\RequestedThemeToVisibilityConverter.cs" />
+    <Compile Include="Selector\SharpEntityTemplateSelector.cs" />
+    <Compile Include="Services\LocalStorageService.cs" />
+    <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Services\SettingsService.cs" />
+    <Compile Include="Utils\StringConstants.cs" />
+    <Compile Include="Utils\WinRTFileBasicProperties.cs" />
+    <Compile Include="Utils\WinRTStorageFile.cs" />
+    <Compile Include="Utils\WinRTStorageFile.Extensions.cs" />
+    <Compile Include="ViewModel\SettingsViewModel.cs" />
+    <Compile Include="Views\ExtendedSplashScreen.xaml.cs">
+      <DependentUpon>ExtendedSplashScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\MovieDetailPage.xaml.cs">
+      <DependentUpon>MovieDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PersonDetailPage.xaml.cs">
+      <DependentUpon>PersonDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlanetDetailPage.xaml.cs">
+      <DependentUpon>PlanetDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SpecieDetailPage.xaml.cs">
+      <DependentUpon>SpecieDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StarshipDetailPage.xaml.cs">
+      <DependentUpon>StarshipDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VehicleDetailPage.xaml.cs">
+      <DependentUpon>VehicleDetailPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="StarWarsApp.UWP_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\vehicles\bantha_cargo_skiff.png" />
+    <Content Include="Assets\vehicles\A-Wing-02-icon.png" />
+    <Content Include="Assets\vehicles\A-Wing-icon.png" />
+    <Content Include="Assets\vehicles\AAT-Battle-Tank-icon.png" />
+    <Content Include="Assets\vehicles\ARC-170-01-icon.png" />
+    <Content Include="Assets\vehicles\ARC-170-02-icon.png" />
+    <Content Include="Assets\vehicles\AT-AT-icon.png" />
+    <Content Include="Assets\vehicles\AT-RT-icon.png" />
+    <Content Include="Assets\vehicles\AT-ST-icon.png" />
+    <Content Include="Assets\vehicles\B-Wing-icon.png" />
+    <Content Include="Assets\vehicles\Death-Star-1st-icon.png" />
+    <Content Include="Assets\vehicles\Death-Star-2nd-icon.png" />
+    <Content Include="Assets\vehicles\FC-20_Speeder.png" />
+    <Content Include="Assets\vehicles\Geonosian_NEGAS.png" />
+    <Content Include="Assets\vehicles\Hyena-Bomber-icon.png" />
+    <Content Include="Assets\vehicles\Imperial-Shuttle-01-icon.png" />
+    <Content Include="Assets\vehicles\Imperial-Shuttle-02-icon.png" />
+    <Content Include="Assets\vehicles\Imperial-Star-Destroyer-icon.png" />
+    <Content Include="Assets\vehicles\Jedi-StarFighter-icon.png" />
+    <Content Include="Assets\vehicles\Landspeeder-icon.png" />
+    <Content Include="Assets\vehicles\Lusankya-CE5.png" />
+    <Content Include="Assets\vehicles\Millenium-Falcon-01-icon.png" />
+    <Content Include="Assets\vehicles\Millenium-Falcon-02-icon.png" />
+    <Content Include="Assets\vehicles\Mon-Calamari-Star-Cruiser-icon.png" />
+    <Content Include="Assets\vehicles\Naboo-Fighter-icon.png" />
+    <Content Include="Assets\vehicles\Naboo-Royal-Starship-icon.png" />
+    <Content Include="Assets\vehicles\Republic-Attack-Cruiser-icon.png" />
+    <Content Include="Assets\vehicles\Republic-Attack-GunShip-icon.png" />
+    <Content Include="Assets\vehicles\Republic-Cruiser-icon.png" />
+    <Content Include="Assets\vehicles\sandcrawler.png" />
+    <Content Include="Assets\vehicles\Slave-I-icon.png" />
+    <Content Include="Assets\vehicles\Snowspeeder.png" />
+    <Content Include="Assets\vehicles\Speeder-Bike-icon.png" />
+    <Content Include="Assets\vehicles\Tie-Advanced-icon.png" />
+    <Content Include="Assets\vehicles\Tie-Bomber-icon.png" />
+    <Content Include="Assets\vehicles\Tie-Defender-01-icon.png" />
+    <Content Include="Assets\vehicles\Tie-Defender-02-icon.png" />
+    <Content Include="Assets\vehicles\Tie-Fighter-01-icon.png" />
+    <Content Include="Assets\vehicles\Tie-Fighter-02-icon.png" />
+    <Content Include="Assets\vehicles\Tie-Fighter-03-icon.png" />
+    <Content Include="Assets\vehicles\Tie-Interceptor-icon.png" />
+    <Content Include="Assets\vehicles\Trade-Federation-Battleship-icon.png" />
+    <Content Include="Assets\vehicles\Trade-Federation-Landing-Ship-icon.png" />
+    <Content Include="Assets\vehicles\Vulture-Droid-icon.png" />
+    <Content Include="Assets\vehicles\X-Wing-01-icon.png" />
+    <Content Include="Assets\vehicles\X-Wing-02-icon.png" />
+    <Content Include="Assets\vehicles\Y-Wing-icon %281%29.png" />
+    <Content Include="Assets\vehicles\Y-Wing-icon.png" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Controls\FilmDetailInfoControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HeaderTileBoxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HeaderItemControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LightSaberLoadingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PeopleDetailInfoControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\StarWarsEntityListControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TileBoxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ExtendedSplashScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\CustomStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Views\MovieDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PersonDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PlanetDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SpecieDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StarshipDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VehicleDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{e5f481bf-b68a-4465-b600-4048b29446c0}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{48969e58-7b89-4e15-82ae-c2fa2ad674c3}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,62 @@
+﻿<Page
+    x:Class="StarWarsApp.UWP.Views.SpecieDetailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StarWarsApp.UWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:StarWarsApp.UWP.Controls"
+    mc:Ignorable="d"
+    DataContext="{Binding SpecieViewModel, Source={StaticResource ViewModelManager}}">
+
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" HorizontalScrollMode="Disabled" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled">
+            <StackPanel x:Name="mobileScreenInfo" Orientation="Vertical">
+                <TextBlock Text="{Binding Specie.name}" FontSize="42" FontWeight="SemiLight" Margin="10,0,0,0" VerticalAlignment="Center" Foreground="{ThemeResource ListTextBlockBrush}" />
+                <Border BorderBrush="{ThemeResource ListBorderBrush}" BorderThickness="0,0,0,2" Margin="0,0,0,10">
+
+                    <ItemsControl>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <ItemsWrapGrid Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <controls:TileBoxControl Header="[AVAERAGE HEIGHT]" Text="{Binding Specie.average_height}" />
+                        <controls:TileBoxControl Header="[AVERAGE LIFESPANE]" Text="{Binding Specie.average_lifespane}" />
+                        <controls:TileBoxControl Header="[CLASSIFICATION]" Text="{Binding Specie.classification}" />
+                        <controls:TileBoxControl Header="[DESIGNATION]" Text="{Binding Specie.designation}" />
+                        <controls:TileBoxControl Header="[EYE COLORS]" Text="{Binding Specie.eye_colors}" />
+                        <controls:TileBoxControl Header="[HAIR COLORS]" Text="{Binding Specie.hair_colors}" />
+                        <controls:TileBoxControl Header="[SKIN COLORS]" Text="{Binding Specie.skin_colors}" />
+                        <controls:TileBoxControl Header="[HOMEWORLD]" Text="{Binding HomeWorld.name}" />
+                    </ItemsControl>
+                </Border>
+                <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding People, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
+                    <controls:Expander.HeaderButtonContent>
+                        <TextBlock Text="PEOPLE" Style="{StaticResource HeaderTextBlockStyle}" />
+                    </controls:Expander.HeaderButtonContent>
+                    <controls:StarWarsEntityListControl ItemSource="{Binding People}" DisplaySearchBox="False" DisplayMemberPath="name" Visibility="{Binding People, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
+                </controls:Expander>
+                <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding Vehicles, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
+                    <controls:Expander.HeaderButtonContent>
+                        <TextBlock Text="VEHICLES" Style="{StaticResource HeaderTextBlockStyle}" />
+                    </controls:Expander.HeaderButtonContent>
+                    <controls:StarWarsEntityListControl ItemSource="{Binding Vehicles}" DisplaySearchBox="False" DisplayMemberPath="name" Visibility="{Binding Vehicles, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
+                </controls:Expander>
+                <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding Starships, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
+                    <controls:Expander.HeaderButtonContent>
+                        <TextBlock Text="STARSHIPS" Style="{StaticResource HeaderTextBlockStyle}" />
+                    </controls:Expander.HeaderButtonContent>
+                    <controls:StarWarsEntityListControl ItemSource="{Binding Starships}" DisplaySearchBox="False" DisplayMemberPath="name" Visibility="{Binding Starships, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
+                </controls:Expander>
+                <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding Movies, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
+                    <controls:Expander.HeaderButtonContent>
+                        <TextBlock Text="MOVIES" Style="{StaticResource HeaderTextBlockStyle}" />
+                    </controls:Expander.HeaderButtonContent>
+                    <controls:StarWarsEntityListControl ItemSource="{Binding Movies}" DisplaySearchBox="False" DisplayMemberPath="title" Visibility="{Binding Starships, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
+                </controls:Expander>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

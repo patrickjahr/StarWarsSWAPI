@@ -1,0 +1,47 @@
+﻿<UserControl
+    x:Class="StarWarsApp.UWP.Controls.PeopleDetailInfoControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StarWarsApp.UWP.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid>
+        <Grid Visibility="{Binding SelectedPeople, Converter={StaticResource NullToVisibilityConverter}, ConverterParameter=DisplayIfNotEmpty}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="[Name]" Style="{StaticResource HeaderTextBlockStyle}" />
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding SelectedPeople.name}" />
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="[Eye Color]" Style="{StaticResource HeaderTextBlockStyle}" />
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SelectedPeople.eye_color}" />
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="[Gender]" Style="{StaticResource HeaderTextBlockStyle}"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding SelectedPeople.gender}" />
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="[Hair Color]" Style="{StaticResource HeaderTextBlockStyle}" />
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding SelectedPeople.hair_color}" />
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="[Height]" Style="{StaticResource HeaderTextBlockStyle}" />
+            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding SelectedPeople.height}" />
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="[Mass]" Style="{StaticResource HeaderTextBlockStyle}"/>
+            <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding SelectedPeople.mass}" />
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="[Skin Color]" Style="{StaticResource HeaderTextBlockStyle}" />
+            <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding SelectedPeople.skin_color}" />
+            <TextBlock Grid.Row="7" Grid.Column="0" Text="[Homeworld]" Style="{StaticResource HeaderTextBlockStyle}" />
+            <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding SelectedPeople.homeworld}" />
+        </Grid>
+    </Grid>
+</UserControl>

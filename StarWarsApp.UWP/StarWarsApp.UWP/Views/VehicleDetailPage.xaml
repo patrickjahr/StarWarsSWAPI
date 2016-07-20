@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="StarWarsApp.UWP.Views.VehicleDetailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StarWarsApp.UWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:StarWarsApp.UWP.Controls"
+    mc:Ignorable="d"
+    DataContext="{Binding VehicleViewModel, Source={StaticResource ViewModelManager}}">
+
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" HorizontalScrollMode="Disabled" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled">
+            <StackPanel x:Name="mobileScreenInfo" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Image Height="40" Width="40" Margin="4,0,0,0" Source="{Binding Converter={StaticResource RandomVehiclePictureConverter}}" Stretch="Uniform" />
+                    <TextBlock Text="{Binding Vehicle.name}" FontSize="42" FontWeight="SemiLight" Margin="10,0,0,0" VerticalAlignment="Center" Foreground="{ThemeResource ListTextBlockBrush}" />
+                </StackPanel>
+                <Border BorderBrush="{ThemeResource ListBorderBrush}" BorderThickness="0,0,0,2" Margin="0,0,0,10">
+
+                    <ItemsControl>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <ItemsWrapGrid Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <controls:TileBoxControl Header="[CARGO CAPACITY]" Text="{Binding Vehicle.cargo_capacity}" />
+                        <controls:TileBoxControl Header="[CONSUMABLES]" Text="{Binding Vehicle.consumables}" />
+                        <controls:TileBoxControl Header="[COST IN CREDITS]" Text="{Binding Vehicle.cost_in_credits}" />
+                        <controls:TileBoxControl Header="[CREW]" Text="{Binding Vehicle.crew}" />
+                        <controls:TileBoxControl Header="[MANUFACTURER]" Text="{Binding Vehicle.manufacturer}" />
+                        <controls:TileBoxControl Header="[MAX ATMOSPHERING SPEED]" Text="{Binding Vehicle.max_atmosphering_speed}" />
+                        <controls:TileBoxControl Header="[LENGTH]" Text="{Binding Vehicle.length}" />
+                        <controls:TileBoxControl Header="[MODEL]" Text="{Binding Vehicle.model}" />
+                        <controls:TileBoxControl Header="[PASSENGERS]" Text="{Binding Vehicle.passengers}" />
+                        <controls:TileBoxControl Header="[VEHICLE CLASS]" Text="{Binding Vehicle. vehicle_class}" />
+                    </ItemsControl>
+                </Border>
+                <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding People, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
+                    <controls:Expander.HeaderButtonContent>
+                        <TextBlock Text="PILOTS" Style="{StaticResource HeaderTextBlockStyle}" />
+                    </controls:Expander.HeaderButtonContent>
+                    <controls:StarWarsEntityListControl ItemSource="{Binding People}" DisplaySearchBox="False" DisplayMemberPath="name" Visibility="{Binding People, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
+                </controls:Expander>
+                <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding Movies, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
+                    <controls:Expander.HeaderButtonContent>
+                        <TextBlock Text="MOVIES" Style="{StaticResource HeaderTextBlockStyle}" />
+                    </controls:Expander.HeaderButtonContent>
+                    <controls:StarWarsEntityListControl ItemSource="{Binding Movies}" DisplaySearchBox="False" DisplayMemberPath="title" Visibility="{Binding Starships, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
+                </controls:Expander>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

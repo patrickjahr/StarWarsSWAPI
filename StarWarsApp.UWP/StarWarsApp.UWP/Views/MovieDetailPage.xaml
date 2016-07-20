@@ -1,0 +1,76 @@
+﻿<Page
+    x:Class="StarWarsApp.UWP.Views.MovieDetailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StarWarsApp.UWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:StarWarsApp.UWP.Controls"
+    xmlns:controls1="using:AppStudio.Uwp.Controls"
+    mc:Ignorable="d"
+    DataContext="{Binding MovieViewModel, Source={StaticResource ViewModelManager}}">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" HorizontalScrollMode="Disabled" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled">
+            <StackPanel x:Name="mobileScreenInfo" Orientation="Vertical">
+                <controls1:ImageEx HorizontalAlignment="Stretch" VerticalAlignment="Stretch" AnimateGif="True" Source="{Binding Film.episode_id, Converter={StaticResource EpisodeToImageConverter}, ConverterParameter=wide}" Stretch="UniformToFill" Margin="10" />
+                <ItemsControl Margin="10,0,0,10" BorderBrush="{ThemeResource ListBorderBrush}" BorderThickness="0,0,0,2">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsWrapGrid Orientation="Horizontal" ItemWidth="250" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <controls:TileBoxControl Grid.Column="0" Header="[DIRECTOR]" Text="{Binding Film.director}" />
+                    <controls:TileBoxControl Grid.Column="1" Header="[PRODUCER]" Text="{Binding Film.producer}" />
+                </ItemsControl>
+                <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding People, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
+                    <controls:Expander.HeaderButtonContent>
+                        <TextBlock Text="Opening Crawl" Style="{StaticResource HeaderTextBlockStyle}" />
+                    </controls:Expander.HeaderButtonContent>
+                    <controls:TileBoxControl Text="{Binding Film.opening_crawl}" />
+                </controls:Expander>
+                <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding People, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
+                    <controls:Expander.HeaderButtonContent>
+                        <TextBlock Text="PEOPLE" Style="{StaticResource HeaderTextBlockStyle}" />
+                    </controls:Expander.HeaderButtonContent>
+                    <controls:StarWarsEntityListControl ItemSource="{Binding People}" DisplaySearchBox="False" DisplayMemberPath="name" Visibility="{Binding People, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
+                </controls:Expander>
+                <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding Vehicles, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
+                    <controls:Expander.HeaderButtonContent>
+                        <TextBlock Text="VEHICLES" Style="{StaticResource HeaderTextBlockStyle}" />
+                    </controls:Expander.HeaderButtonContent>
+                    <controls:StarWarsEntityListControl ItemSource="{Binding Vehicles}" DisplaySearchBox="False" DisplayMemberPath="name" Visibility="{Binding Vehicles, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
+                </controls:Expander>
+                <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding Starships, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
+                    <controls:Expander.HeaderButtonContent>
+                        <TextBlock Text="STARSHIPS" Style="{StaticResource HeaderTextBlockStyle}" />
+                    </controls:Expander.HeaderButtonContent>
+                    <controls:StarWarsEntityListControl ItemSource="{Binding Starships}" DisplaySearchBox="False" DisplayMemberPath="name" Visibility="{Binding Starships, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
+                </controls:Expander>
+                <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding Species, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
+                    <controls:Expander.HeaderButtonContent>
+                        <TextBlock Text="SPECIES" Style="{StaticResource HeaderTextBlockStyle}" />
+                    </controls:Expander.HeaderButtonContent>
+                    <controls:StarWarsEntityListControl ItemSource="{Binding Species}" DisplaySearchBox="False" DisplayMemberPath="name" Visibility="{Binding Species, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
+                </controls:Expander>
+                <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding Planets, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
+                    <controls:Expander.HeaderButtonContent>
+                        <TextBlock Text="PLANETS" Style="{StaticResource HeaderTextBlockStyle}" />
+                    </controls:Expander.HeaderButtonContent>
+                    <controls:StarWarsEntityListControl ItemSource="{Binding Planets}" DisplaySearchBox="False" DisplayMemberPath="name" Visibility="{Binding Planets, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
+                </controls:Expander>
+            </StackPanel>
+        </ScrollViewer>
+        <CommandBar Grid.Row="1" x:Name="cmdBar" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+            <AppBarButton Icon="Home" Label="Home" Click="HomeButton_OnClick" />
+            <AppBarButton Icon="Sync" Label="Update" />
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="Settings" Click="SettingsButton_OnClick"></AppBarButton>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Grid>
+</Page>

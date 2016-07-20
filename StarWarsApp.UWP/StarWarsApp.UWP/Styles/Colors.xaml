@@ -1,0 +1,52 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush x:Key="SystemAltHighColorBrush" Color="#0033B2" />
+            <SolidColorBrush x:Key="FlowTextColorBrush" Color="#4BD5EE" />
+            <SolidColorBrush x:Key="ContrastColorBrush" Color="#FFFFFF" />
+            <SolidColorBrush x:Key="OpenCrawlTextColor" Color="#E5B13A" />
+            <SolidColorBrush x:Key="ListTextBlockBrush" Color="#FFFFFF" />
+            <SolidColorBrush x:Key="ListBorderBrush" Color="#FFFFFF" />
+
+
+            <LinearGradientBrush x:Key="LightSaberBrush" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#0033B2" Offset="0"/>
+                <GradientStop Color="#FEFEFE" Offset="0.3"/>
+                <GradientStop Color="#FEFEFE" Offset="0.5"/>
+                <GradientStop Color="#FEFEFE" Offset="0.7"/>
+                <GradientStop Color="#0033B2" Offset="1" />
+            </LinearGradientBrush>
+
+            <ImageBrush x:Key="ApplicationPageBackgroundThemeBrush" ImageSource="../Assets/bg_background_light.jpg" Stretch="UniformToFill"></ImageBrush>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush x:Key="SystemAltHighColorBrush" Color="#f9d648" />
+            <SolidColorBrush x:Key="FlowTextColorBrush" Color="#4BD5EE" />
+            <SolidColorBrush x:Key="ContrastColorBrush" Color="#000000" />
+            <SolidColorBrush x:Key="OpenCrawlTextColor" Color="#E5B13A" />
+            <SolidColorBrush x:Key="ListTextBlockBrush" Color="#A0A0A0" />
+            <SolidColorBrush x:Key="ListBorderBrush" Color="#4C4C5B" />
+
+
+            <LinearGradientBrush x:Key="LightSaberBrush" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#240000" Offset="0"/>
+                <GradientStop Color="#3B0000" Offset="0.05"/>
+                <GradientStop Color="#750000" Offset="0.1"/>
+                <GradientStop Color="#940000" Offset="0.15"/>
+                <GradientStop Color="#DE0505" Offset="0.2"/>
+                <GradientStop Color="#FEFEFE" Offset="0.3"/>
+                <GradientStop Color="#FEFEFE" Offset="0.5"/>
+                <GradientStop Color="#FEFEFE" Offset="0.7"/>
+                <GradientStop Color="#DE0505" Offset="0.8" />
+                <GradientStop Color="#940000" Offset="0.85"/>
+                <GradientStop Color="#750000" Offset="0.9"/>
+                <GradientStop Color="#3B0000" Offset="0.95"/>
+                <GradientStop Color="#240000" Offset="1"/>
+            </LinearGradientBrush>
+
+            <ImageBrush x:Key="ApplicationPageBackgroundThemeBrush" ImageSource="../Assets/bg-gross.png" Stretch="UniformToFill"></ImageBrush>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>
