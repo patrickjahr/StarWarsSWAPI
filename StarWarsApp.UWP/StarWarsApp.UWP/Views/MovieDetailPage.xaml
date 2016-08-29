@@ -24,52 +24,52 @@
                             <ItemsWrapGrid Orientation="Horizontal" ItemWidth="250" />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
-                    <controls:TileBoxControl Grid.Column="0" Header="[DIRECTOR]" Text="{Binding Film.director}" />
-                    <controls:TileBoxControl Grid.Column="1" Header="[PRODUCER]" Text="{Binding Film.producer}" />
+                    <controls:TileBoxControl Grid.Column="0" x:Uid="tbcDirector" Header="[DIRECTOR]" Text="{Binding Film.director}" />
+                    <controls:TileBoxControl Grid.Column="1" x:Uid="tbcProducer" Header="[PRODUCER]" Text="{Binding Film.producer}" />
                 </ItemsControl>
                 <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding People, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
                     <controls:Expander.HeaderButtonContent>
-                        <TextBlock Text="Opening Crawl" Style="{StaticResource HeaderTextBlockStyle}" />
+                        <TextBlock x:Uid="tbOpeningCrawl" Text="[Opening Crawl]" Style="{StaticResource HeaderTextBlockStyle}" />
                     </controls:Expander.HeaderButtonContent>
                     <controls:TileBoxControl Text="{Binding Film.opening_crawl}" />
                 </controls:Expander>
                 <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding People, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
                     <controls:Expander.HeaderButtonContent>
-                        <TextBlock Text="PEOPLE" Style="{StaticResource HeaderTextBlockStyle}" />
+                        <TextBlock x:Uid="tbPeople" Text="[PEOPLE]" Style="{StaticResource HeaderTextBlockStyle}" />
                     </controls:Expander.HeaderButtonContent>
                     <controls:StarWarsEntityListControl ItemSource="{Binding People}" DisplaySearchBox="False" DisplayMemberPath="name" Visibility="{Binding People, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
                 </controls:Expander>
                 <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding Vehicles, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
                     <controls:Expander.HeaderButtonContent>
-                        <TextBlock Text="VEHICLES" Style="{StaticResource HeaderTextBlockStyle}" />
+                        <TextBlock x:Uid="tbVehicles" Text="[VEHICLES]" Style="{StaticResource HeaderTextBlockStyle}" />
                     </controls:Expander.HeaderButtonContent>
                     <controls:StarWarsEntityListControl ItemSource="{Binding Vehicles}" DisplaySearchBox="False" DisplayMemberPath="name" Visibility="{Binding Vehicles, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
                 </controls:Expander>
                 <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding Starships, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
                     <controls:Expander.HeaderButtonContent>
-                        <TextBlock Text="STARSHIPS" Style="{StaticResource HeaderTextBlockStyle}" />
+                        <TextBlock x:Uid="tbStarships" Text="[STARSHIPS]" Style="{StaticResource HeaderTextBlockStyle}" />
                     </controls:Expander.HeaderButtonContent>
                     <controls:StarWarsEntityListControl ItemSource="{Binding Starships}" DisplaySearchBox="False" DisplayMemberPath="name" Visibility="{Binding Starships, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
                 </controls:Expander>
                 <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding Species, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
                     <controls:Expander.HeaderButtonContent>
-                        <TextBlock Text="SPECIES" Style="{StaticResource HeaderTextBlockStyle}" />
+                        <TextBlock x:Uid="tbSpecies" Text="[SPECIES]" Style="{StaticResource HeaderTextBlockStyle}" />
                     </controls:Expander.HeaderButtonContent>
                     <controls:StarWarsEntityListControl ItemSource="{Binding Species}" DisplaySearchBox="False" DisplayMemberPath="name" Visibility="{Binding Species, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
                 </controls:Expander>
                 <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding Planets, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
                     <controls:Expander.HeaderButtonContent>
-                        <TextBlock Text="PLANETS" Style="{StaticResource HeaderTextBlockStyle}" />
+                        <TextBlock x:Uid="tbPlanet" Text="[PLANETS]" Style="{StaticResource HeaderTextBlockStyle}" />
                     </controls:Expander.HeaderButtonContent>
                     <controls:StarWarsEntityListControl ItemSource="{Binding Planets}" DisplaySearchBox="False" DisplayMemberPath="name" Visibility="{Binding Planets, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
                 </controls:Expander>
             </StackPanel>
         </ScrollViewer>
         <CommandBar Grid.Row="1" x:Name="cmdBar" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
-            <AppBarButton Icon="Home" Label="Home" Click="HomeButton_OnClick" />
-            <AppBarButton Icon="Sync" Label="Update" />
+            <AppBarButton Icon="Home" x:Uid="abbHome" Label="[Home]" Click="HomeButton_OnClick" />
+            <AppBarButton Icon="Sync" x:Uid="abbUpdate" Label="[Update]" />
             <CommandBar.SecondaryCommands>
-                <AppBarButton Label="Settings" Click="SettingsButton_OnClick"></AppBarButton>
+                <AppBarButton x:Uid="abbSettings" Label="[Settings]" Click="SettingsButton_OnClick"></AppBarButton>
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Grid>

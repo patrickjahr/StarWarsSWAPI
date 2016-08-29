@@ -19,40 +19,40 @@
                     <ItemsControl>
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <ItemsWrapGrid Orientation="Horizontal" />
+                                <ItemsWrapGrid Orientation="Horizontal"  ItemWidth="250" />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
-                        <controls:TileBoxControl Header="[AVAERAGE HEIGHT]" Text="{Binding Specie.average_height}" />
-                        <controls:TileBoxControl Header="[AVERAGE LIFESPANE]" Text="{Binding Specie.average_lifespane}" />
-                        <controls:TileBoxControl Header="[CLASSIFICATION]" Text="{Binding Specie.classification}" />
-                        <controls:TileBoxControl Header="[DESIGNATION]" Text="{Binding Specie.designation}" />
-                        <controls:TileBoxControl Header="[EYE COLORS]" Text="{Binding Specie.eye_colors}" />
-                        <controls:TileBoxControl Header="[HAIR COLORS]" Text="{Binding Specie.hair_colors}" />
-                        <controls:TileBoxControl Header="[SKIN COLORS]" Text="{Binding Specie.skin_colors}" />
-                        <controls:TileBoxControl Header="[HOMEWORLD]" Text="{Binding HomeWorld.name}" />
+                        <controls:TileBoxControl x:Uid="tbcAvaerageHeight" Header="[AVAERAGE HEIGHT]" Text="{Binding Specie.average_height}" />
+                        <controls:TileBoxControl x:Uid="tbcAvaerageLifespane" Header="[AVERAGE LIFESPANE]" Text="{Binding Specie.average_lifespane}" />
+                        <controls:TileBoxControl x:Uid="tbcClassification" Header="[CLASSIFICATION]" Text="{Binding Specie.classification}" />
+                        <controls:TileBoxControl x:Uid="tbcDesignation" Header="[DESIGNATION]" Text="{Binding Specie.designation}" />
+                        <controls:TileBoxControl x:Uid="tbcEyeColor" Header="[EYE COLORS]" Text="{Binding Specie.eye_colors}" />
+                        <controls:TileBoxControl x:Uid="tbcHairColor" Header="[HAIR COLORS]" Text="{Binding Specie.hair_colors}" />
+                        <controls:TileBoxControl x:Uid="tbcSkinColor" Header="[SKIN COLORS]" Text="{Binding Specie.skin_colors}" />
+                        <controls:TileBoxControl x:Uid="tbcHomeWorld" Header="[HOMEWORLD]" Text="{Binding HomeWorld.name}" />
                     </ItemsControl>
                 </Border>
                 <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding People, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
                     <controls:Expander.HeaderButtonContent>
-                        <TextBlock Text="PEOPLE" Style="{StaticResource HeaderTextBlockStyle}" />
+                        <TextBlock x:Uid="tbPeople" Text="PEOPLE" Style="{StaticResource HeaderTextBlockStyle}" />
                     </controls:Expander.HeaderButtonContent>
                     <controls:StarWarsEntityListControl ItemSource="{Binding People}" DisplaySearchBox="False" DisplayMemberPath="name" Visibility="{Binding People, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
                 </controls:Expander>
                 <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding Vehicles, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
                     <controls:Expander.HeaderButtonContent>
-                        <TextBlock Text="VEHICLES" Style="{StaticResource HeaderTextBlockStyle}" />
+                        <TextBlock x:Uid="tbVehicles" Text="VEHICLES" Style="{StaticResource HeaderTextBlockStyle}" />
                     </controls:Expander.HeaderButtonContent>
                     <controls:StarWarsEntityListControl ItemSource="{Binding Vehicles}" DisplaySearchBox="False" DisplayMemberPath="name" Visibility="{Binding Vehicles, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
                 </controls:Expander>
                 <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding Starships, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
                     <controls:Expander.HeaderButtonContent>
-                        <TextBlock Text="STARSHIPS" Style="{StaticResource HeaderTextBlockStyle}" />
+                        <TextBlock x:Uid="tbStarships" Text="STARSHIPS" Style="{StaticResource HeaderTextBlockStyle}" />
                     </controls:Expander.HeaderButtonContent>
                     <controls:StarWarsEntityListControl ItemSource="{Binding Starships}" DisplaySearchBox="False" DisplayMemberPath="name" Visibility="{Binding Starships, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
                 </controls:Expander>
                 <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding Movies, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
                     <controls:Expander.HeaderButtonContent>
-                        <TextBlock Text="MOVIES" Style="{StaticResource HeaderTextBlockStyle}" />
+                        <TextBlock x:Uid="tbMovies" Text="MOVIES" Style="{StaticResource HeaderTextBlockStyle}" />
                     </controls:Expander.HeaderButtonContent>
                     <controls:StarWarsEntityListControl ItemSource="{Binding Movies}" DisplaySearchBox="False" DisplayMemberPath="title" Visibility="{Binding Starships, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
                 </controls:Expander>

@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Core.Utils;
+using Core.Utils.Extentions;
 using Core.ViewModel;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
@@ -25,7 +26,7 @@ namespace StarWarsApp.UWP.Controls
 {
     public sealed partial class StarWarsEntityListControl : UserControl
     {
-        private readonly OverviewViewModel _vm;
+        private OverviewViewModel _vm;
 
 
         public static readonly DependencyProperty ItemSourceProperty = DependencyProperty.Register(
@@ -94,9 +95,15 @@ namespace StarWarsApp.UWP.Controls
         public StarWarsEntityListControl()
         {
             this.InitializeComponent();
-            _vm = (OverviewViewModel)DataContext;
+            this.Loaded += StarWarsEntityListControl_Loaded;
         }
-        
+
+        private void StarWarsEntityListControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(_vm.IsNull() && this.DataContext is OverviewViewModel)
+                _vm = (OverviewViewModel)this.DataContext;
+        }
+
         private async void Search_OnTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             await _vm.SearchCommand.ExecuteAsync();

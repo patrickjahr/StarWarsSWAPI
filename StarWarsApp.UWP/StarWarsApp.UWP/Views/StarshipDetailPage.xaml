@@ -19,30 +19,30 @@
                     <ItemsControl>
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <ItemsWrapGrid Orientation="Horizontal" />
+                                <ItemsWrapGrid Orientation="Horizontal"  ItemWidth="250"/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
-                        <controls:TileBoxControl Header="[CARGO CAPACITY]" Text="{Binding Starship.cargo_capacity}" />
-                        <controls:TileBoxControl Header="[CONSUMABLES]" Text="{Binding Starship.consumables}" />
-                        <controls:TileBoxControl Header="[COST IN CREDITS]" Text="{Binding Starship.cost_in_credits}" />
-                        <controls:TileBoxControl Header="[CREW]" Text="{Binding Starship.crew}" />
-                        <controls:TileBoxControl Header="[MANUFACTURER]" Text="{Binding Starship.manufacturer}" />
-                        <controls:TileBoxControl Header="[MAX ATMOSPHERING SPEED]" Text="{Binding Starship.max_atmosphering_speed}" />
-                        <controls:TileBoxControl Header="[LENGTH]" Text="{Binding Starship.length}" />
-                        <controls:TileBoxControl Header="[MODEL]" Text="{Binding Starship.model}" />
-                        <controls:TileBoxControl Header="[PASSENGERS]" Text="{Binding Starship.passengers}" />
-                        <controls:TileBoxControl Header="[STARSHIP CLASS]" Text="{Binding Starship. vehicle_class}" />
+                        <controls:TileBoxControl x:Uid="tbcCargoCapacity" Header="[CARGO CAPACITY]" Text="{Binding Starship.cargo_capacity}" />
+                        <controls:TileBoxControl x:Uid="tbcConsumables" Header="[CONSUMABLES]" Text="{Binding Starship.consumables}" />
+                        <controls:TileBoxControl x:Uid="tbcCostInCredtis" Header="[COST IN CREDITS]" Text="{Binding Starship.cost_in_credits}" />
+                        <controls:TileBoxControl x:Uid="tbcCrew" Header="[CREW]" Text="{Binding Starship.crew}" />
+                        <controls:TileBoxControl x:Uid="tbcManufacturer" Header="[MANUFACTURER]" Text="{Binding Starship.manufacturer}" />
+                        <controls:TileBoxControl x:Uid="tbcMaxAtmospheringSpeed" Header="[MAX ATMOSPHERING SPEED]" Text="{Binding Starship.max_atmosphering_speed}" />
+                        <controls:TileBoxControl x:Uid="tbcLength" Header="[LENGTH]" Text="{Binding Starship.length}" />
+                        <controls:TileBoxControl x:Uid="tbcModel" Header="[MODEL]" Text="{Binding Starship.model}" />
+                        <controls:TileBoxControl x:Uid="tbcPassengers" Header="[PASSENGERS]" Text="{Binding Starship.passengers}" />
+                        <controls:TileBoxControl x:Uid="tbcStarshipClass" Header="[STARSHIP CLASS]" Text="{Binding Starship. vehicle_class}" />
                     </ItemsControl>
                 </Border>
                 <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding People, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
                     <controls:Expander.HeaderButtonContent>
-                        <TextBlock Text="PILOTS" Style="{StaticResource HeaderTextBlockStyle}" />
+                        <TextBlock x:Uid="tbPilots" Text="[PILOTS]" Style="{StaticResource HeaderTextBlockStyle}" />
                     </controls:Expander.HeaderButtonContent>
                     <controls:StarWarsEntityListControl ItemSource="{Binding People}" DisplaySearchBox="False" DisplayMemberPath="name" Visibility="{Binding People, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
                 </controls:Expander>
                 <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding Movies, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
                     <controls:Expander.HeaderButtonContent>
-                        <TextBlock Text="MOVIES" Style="{StaticResource HeaderTextBlockStyle}" />
+                        <TextBlock x:Uid="tbMovies" Text="MOVIES" Style="{StaticResource HeaderTextBlockStyle}" />
                     </controls:Expander.HeaderButtonContent>
                     <controls:StarWarsEntityListControl ItemSource="{Binding Movies}" DisplaySearchBox="False" DisplayMemberPath="title" Visibility="{Binding Starships, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
                 </controls:Expander>

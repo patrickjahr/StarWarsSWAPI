@@ -231,6 +231,7 @@
     <Compile Include="Selector\SharpEntityTemplateSelector.cs" />
     <Compile Include="Services\LocalStorageService.cs" />
     <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Services\ResWrapper.cs" />
     <Compile Include="Services\SettingsService.cs" />
     <Compile Include="Utils\StringConstants.cs" />
     <Compile Include="Utils\WinRTFileBasicProperties.cs" />
@@ -270,6 +271,8 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <PRIResource Include="Resources\de-DE\Resources.resw" />
+    <PRIResource Include="Resources\en-US\Resources.resw" />
     <None Include="StarWarsApp.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

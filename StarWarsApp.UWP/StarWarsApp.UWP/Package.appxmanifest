@@ -3,7 +3,7 @@
   <Identity Name="816c26e1-5492-4042-b8ae-8346e4198e31" Publisher="CN=jahr" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="816c26e1-5492-4042-b8ae-8346e4198e31" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>StarWarsApp.UWP</DisplayName>
+    <DisplayName>Star Wars Pocket</DisplayName>
     <PublisherDisplayName>jahr</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="StarWarsApp.UWP.App">
-      <uap:VisualElements DisplayName="StarWarsApp.UWP" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="StarWarsApp.UWP" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="Star Wars Pocket" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Small Star Wars overview App with data from SWAPI Api (http://swapi.co)" BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="SWAPI" Square310x310Logo="Assets\Square310x310Logo.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square310x310Logo" />

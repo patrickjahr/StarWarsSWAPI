@@ -12,37 +12,41 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ScrollViewer HorizontalScrollBarVisibility="Disabled" HorizontalScrollMode="Disabled" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled">
             <StackPanel x:Name="mobileScreenInfo" Orientation="Vertical">
-                <StackPanel Orientation="Horizontal">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
                     <Image Height="40" Width="40" Margin="4,0,0,0" Source="{Binding Converter={StaticResource RandomPlanetPictureConverter}}" Stretch="Uniform" />
-                    <TextBlock Text="{Binding Planet.name}" FontSize="42" TextWrapping="Wrap" FontWeight="SemiLight" Margin="10,0,0,0" VerticalAlignment="Center" Foreground="{ThemeResource ListTextBlockBrush}" />
-                </StackPanel>
+                    <TextBlock Grid.Column="1" Text="{Binding Planet.name}" FontSize="42" TextWrapping="Wrap" FontWeight="SemiLight" Margin="10,0,0,0" VerticalAlignment="Center" Foreground="{ThemeResource ListTextBlockBrush}" />
+                </Grid>
                 <Border BorderBrush="{ThemeResource ListBorderBrush}" BorderThickness="0,0,0,2" Margin="0,0,0,10">
 
                     <ItemsControl>
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <ItemsWrapGrid Orientation="Horizontal" />
+                                <ItemsWrapGrid Orientation="Horizontal" MinWidth="250" />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
-                        <controls:TileBoxControl Header="[CLIMATE]" Text="{Binding Planet.climate }" />
-                        <controls:TileBoxControl Header="[DIAMETER]" Text="{Binding Planet.diameter }" />
-                        <controls:TileBoxControl Header="[GRAVITY]" Text="{Binding Planet.gravity }" />
-                        <controls:TileBoxControl Header="[ROTATION PERIOD]" Text="{Binding Planet.rotation_period }" />
-                        <controls:TileBoxControl Header="[ORBITAL PERIOD]" Text="{Binding Planet.orbital_period }" />
-                        <controls:TileBoxControl Header="[POPULATION]" Text="{Binding Planet.population }" />
-                        <controls:TileBoxControl Header="[SURFACE WATER]" Text="{Binding Planet.surface_water }" />
-                        <controls:TileBoxControl Header="[TERRAIN]" Text="{Binding Planet.terrain }" />
+                        <controls:TileBoxControl x:Uid="tbcClimate" Header="[CLIMATE]" Text="{Binding Planet.climate }" />
+                        <controls:TileBoxControl x:Uid="tbcDiameter" Header="[DIAMETER]" Text="{Binding Planet.diameter }" />
+                        <controls:TileBoxControl x:Uid="tbcGravity" Header="[GRAVITY]" Text="{Binding Planet.gravity }" />
+                        <controls:TileBoxControl x:Uid="tbcRotationPeriod" Header="[ROTATION PERIOD]" Text="{Binding Planet.rotation_period }" />
+                        <controls:TileBoxControl x:Uid="tbcOrbitalPeriod" Header="[ORBITAL PERIOD]" Text="{Binding Planet.orbital_period }" />
+                        <controls:TileBoxControl x:Uid="tbcPopulation" Header="[POPULATION]" Text="{Binding Planet.population }" />
+                        <controls:TileBoxControl x:Uid="tbcSurfaceWater" Header="[SURFACE WATER]" Text="{Binding Planet.surface_water }" />
+                        <controls:TileBoxControl x:Uid="tbcTerrain" Header="[TERRAIN]" Text="{Binding Planet.terrain }" />
                     </ItemsControl>
                 </Border>
                 <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding People, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
                     <controls:Expander.HeaderButtonContent>
-                        <TextBlock Text="PEOPLE" Style="{StaticResource HeaderTextBlockStyle}" />
+                        <TextBlock x:Uid="tbPeople" Text="PEOPLE" Style="{StaticResource HeaderTextBlockStyle}" />
                     </controls:Expander.HeaderButtonContent>
                     <controls:StarWarsEntityListControl ItemSource="{Binding People}" DisplaySearchBox="False" DisplayMemberPath="name" Visibility="{Binding People, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
                 </controls:Expander>
                 <controls:Expander VerticalAlignment="Top" Margin="0,0,0,10" IsExpanded="False" Visibility="{Binding Movies, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}">
                     <controls:Expander.HeaderButtonContent>
-                        <TextBlock Text="MOVIES" Style="{StaticResource HeaderTextBlockStyle}" />
+                        <TextBlock x:Uid="tbMovies" Text="MOVIES" Style="{StaticResource HeaderTextBlockStyle}" />
                     </controls:Expander.HeaderButtonContent>
                     <controls:StarWarsEntityListControl ItemSource="{Binding Movies}" DisplaySearchBox="False" DisplayMemberPath="title" Visibility="{Binding Starships, Converter={StaticResource NullOrEmptyListToVisibilityConverter}}" />
                 </controls:Expander>
